@@ -9,11 +9,11 @@ module Poser
 
     module ClassMethods
       def presenter_class
-        Util.first_available_class [
+        Util.first_available_class(
           "#{self}::Presenter",
           "#{self}Presenter",
           "Poser::Presenter"
-        ]
+        )
       end
     end
 
