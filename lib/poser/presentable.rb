@@ -8,8 +8,10 @@ module Poser
     end
 
     module ClassMethods
+      attr_writer :presenter_class
+
       def presenter_class
-        Util.first_available_class(
+        @presenter_class ||= Util.first_available_class(
           "#{self}::Presenter",
           "#{self}Presenter",
           "Poser::Presenter"

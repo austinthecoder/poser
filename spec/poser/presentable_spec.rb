@@ -8,10 +8,7 @@ describe Poser::Presentable do
     subject { C }
 
     describe "presenter_class" do
-      after :all do
-        Object.send :remove_const, :CPresenter
-        C.send :remove_const, :Presenter
-      end
+      before { subject.presenter_class = nil }
 
       it "returns Poser::Presenter when no presenter classes are available for this class" do
         subject.presenter_class.should == Poser::Presenter
@@ -20,11 +17,15 @@ describe Poser::Presentable do
       it "returns CPresenter if it exists" do
         CPresenter = Class.new
         subject.presenter_class.should == CPresenter
+        Object.send :remove_const, :CPresenter
       end
 
       it "returns the Presenter class namespaced under this class if it exists" do
+        CPresenter = Class.new
         C::Presenter = Class.new
         subject.presenter_class.should == C::Presenter
+        C.send :remove_const, :Presenter
+        Object.send :remove_const, :CPresenter
       end
     end
   end
