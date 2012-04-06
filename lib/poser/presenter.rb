@@ -10,23 +10,7 @@ module Poser
         elsif object.respond_to? :to_presenter
           object.to_presenter context
         else
-          determine_presenter_class(object).new object, context
-        end
-      end
-
-      def presents(name)
-        alias_method name, :__getobj__
-      end
-
-    private
-
-      def determine_presenter_class(object)
-        object.class::Presenter
-      rescue NameError
-        if object.is_a?(Enumerable) || (defined?(ActiveRecord) && object.is_a?(ActiveRecord::Relation))
-          EnumerablePresenter
-        else
-          self
+          new object, context
         end
       end
     end

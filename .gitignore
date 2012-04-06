@@ -1,6 +1,7 @@
 *.gem
 *.rbc
 .rspec
+.rvmrc
 .bundle
 .config
 .yardoc

@@ -20,6 +20,10 @@ describe Poser::Presenter do
         @object.stub(:to_presenter) { result }
         subject.present(@object, @context).should == result
       end
+
+      it "otherwise returns an instance of itself" do
+        subject.present(@object, @context).should == subject.new(@object, @context)
+      end
     end
   end
 
@@ -30,6 +34,9 @@ describe Poser::Presenter do
       @presentee = Object.new
       @context = Object.new
     end
+
+    it { should be_presented }
+    its(:context) { should == @context }
 
     describe "==" do
       it "is true given a #{described_class} instantiated with the same presentee and context" do
@@ -49,8 +56,6 @@ describe Poser::Presenter do
       end
     end
 
-    it { should be_presented }
-
     describe "present" do
       it "returns the result of telling the #{described_class} to present the given object with the same context" do
         result = Object.new
@@ -63,7 +68,5 @@ describe Poser::Presenter do
         subject.present(object).should == result
       end
     end
-
-    its(:context) { should == @context }
   end
 end
