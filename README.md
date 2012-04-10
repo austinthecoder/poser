@@ -2,6 +2,8 @@
 
 A minimal implementation of the presenter pattern.
 
+[![Build Status](https://secure.travis-ci.org/austinthecoder/poser.png?branch=master)](http://travis-ci.org/austinthecoder/poser)
+
 ## Installation
 
 Add this line to your application's Gemfile:
