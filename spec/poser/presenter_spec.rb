@@ -68,5 +68,12 @@ describe Poser::Presenter do
         subject.present(object).should == result
       end
     end
+
+    describe "class" do
+      it "delegates to the presenter" do
+        @presentee.stub(:class) { String }
+        subject.class.should == String
+      end
+    end
   end
 end
