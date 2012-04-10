@@ -21,7 +21,11 @@ module Poser
           names.shift if names.empty? || names.first.empty?
 
           names.inject(Object) do |constant, name|
-            constant.const_get name, false
+            if RUBY_VERSION =~ /^1\.8/
+              constant.const_get name
+            else
+              constant.const_get name, false
+            end
           end
         end
       end

@@ -22,18 +22,12 @@ module Poser
 
     attr_reader :context
 
-    alias_method :__class__, :class
-
     def id
       __getobj__.id
     end
 
-    def class
-      __getobj__.class
-    end
-
     def present(object)
-      __class__.present object, context
+      self.class.present object, context
     end
 
     def presented?
@@ -41,7 +35,7 @@ module Poser
     end
 
     def ==(other)
-      other.is_a?(__class__) && context == other.context && __getobj__ == other.__getobj__
+      other.is_a?(self.class) && context == other.context && __getobj__ == other.__getobj__
     end
 
   end
