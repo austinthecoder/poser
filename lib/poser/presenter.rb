@@ -38,5 +38,9 @@ module Poser
       other.is_a?(self.class) && context == other.context && __getobj__ == other.__getobj__
     end
 
+    def is_a?(klass)
+      super || __getobj__.is_a?(klass)
+    end
+
   end
 end

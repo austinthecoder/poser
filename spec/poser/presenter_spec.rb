@@ -10,6 +10,14 @@ describe Poser::Presenter do
         @context = Object.new
       end
 
+      it "returns the object if it's not truthy" do
+        @object = nil
+        subject.present(@object, @context).should === @object
+
+        @object = false
+        subject.present(@object, @context).should === @object
+      end
+
       it "returns the object if it's presented" do
         @object.stub(:presented?) { true }
         subject.present(@object, @context).should == @object
@@ -66,6 +74,14 @@ describe Poser::Presenter do
         end
 
         subject.present(object).should == result
+      end
+    end
+
+    describe "is_a?" do
+      it "is true with it's class or it's presentee's class" do
+        @presentee = ""
+        subject.is_a?(String).should be_true
+        subject.is_a?(Poser::Presenter).should be_true
       end
     end
   end
