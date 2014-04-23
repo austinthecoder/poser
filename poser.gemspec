@@ -4,8 +4,8 @@ require File.expand_path('../lib/poser/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Austin Schneider"]
   gem.email         = ["austinthecoder@gmail.com"]
-  gem.description   = 'A minimal implementation of the presenter pattern.'
-  gem.summary       = 'A minimal implementation of the presenter pattern.'
+  gem.description   = 'A minimal implementation of the delegator pattern.'
+  gem.summary       = 'A minimal implementation of the delegator pattern.'
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)

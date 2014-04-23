@@ -2,8 +2,8 @@ module Poser
 end
 
 require "poser/version"
-require 'poser/presenter'
-require 'poser/enumerable_presenter'
-require 'poser/presentable'
-require 'poser/context'
-require 'poser/util'
+require 'poser/mimicker'
+# require 'poser/enumerable_delegator'
+# require 'poser/delegatable'
+# require 'poser/context'
+# require 'poser/util'

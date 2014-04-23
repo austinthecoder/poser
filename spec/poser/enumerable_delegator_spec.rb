@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Poser::EnumerablePresenter do
+describe Poser::EnumerableMimicker do
   subject { described_class.new @presentee, @context }
 
   before do
@@ -8,7 +8,7 @@ describe Poser::EnumerablePresenter do
     @context = mock Object
   end
 
-  it { should be_a(Poser::Presenter) }
+  it { should be_a(Poser::Mimicker) }
 
   describe "each" do
     it "yields each object presented" do

@@ -1,10 +1,10 @@
-require 'poser/presenter'
+require 'poser/delegator'
 
 module Poser
   module Context
 
     def present(object, context = self)
-      Presenter.present object, context
+      Mimicker.present object, context
     end
 
   end

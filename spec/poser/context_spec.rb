@@ -10,17 +10,17 @@ describe Poser::Context do
         @result = Object.new
       end
 
-      it "returns the result of telling Poser::Presenter to present the given object in the given context" do
+      it "returns the result of telling Poser::Mimicker to present the given object in the given context" do
         cntxt = Object.new
-        Poser::Presenter.stub(:present) do |object, context|
+        Poser::Mimicker.stub(:present) do |object, context|
           @result if object == @object && context == cntxt
         end
 
         subject.present(@object, cntxt).should == @result
       end
 
-      it "returns the result of telling Poser::Presenter to present the given object, using itself as the context when a context isn't given" do
-        Poser::Presenter.stub(:present) do |object, context|
+      it "returns the result of telling Poser::Mimicker to present the given object, using itself as the context when a context isn't given" do
+        Poser::Mimicker.stub(:present) do |object, context|
           @result if object == @object && context == subject
         end
 

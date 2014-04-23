@@ -1,6 +1,6 @@
 # Poser
 
-A minimal implementation of the presenter pattern.
+A minimal implementation of the delegator pattern.
 
 [![Build Status](https://secure.travis-ci.org/austinthecoder/poser.png?branch=master)](http://travis-ci.org/austinthecoder/poser)
 
@@ -24,7 +24,7 @@ Or install it yourself as:
 class Battle
 end
 
-class Warrior < Poser::Presenter
+class Warrior < Poser::Mimicker
   def fighting?
     true
   end
@@ -37,7 +37,7 @@ class Person
 
   attr_reader :name
 
-  def to_presenter(context)
+  def to_delegator(context)
     Warrior.new(self, context) if context.is_a?(Battle)
   end
 
@@ -52,7 +52,7 @@ person.fighting?  # false
 
 battle = Battle.new
 
-warrior = person.to_presenter battle
+warrior = person.to_delegator battle
 warrior.name       # 'Austin'
 warrior.fighting?  # true
 ```
